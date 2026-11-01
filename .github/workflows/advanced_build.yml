@@ -293,6 +293,12 @@ jobs:
          echo "CONFIG_ZRAM=m" >> "$CONFIG_FILE"
          echo "CONFIG_ZRAM_DEF_COMP_ZSTD=y" >> "$CONFIG_FILE"
          echo "# CONFIG_ZRAM_DEF_COMP_LZORLE is not set" >> "$CONFIG_FILE"
+         # Wireless: TL-WN722N v1 / WN822N v1 (Atheros AR9271)
+         echo "CONFIG_CFG80211=y" >> "$CONFIG_FILE"
+         echo "CONFIG_MAC80211=y" >> "$CONFIG_FILE"
+         echo "CONFIG_WLAN_VENDOR_ATH=y" >> "$CONFIG_FILE"
+         echo "CONFIG_ATH9K=y" >> "$CONFIG_FILE"
+         echo "CONFIG_ATH9K_HTC=y" >> "$CONFIG_FILE"
           
          # Remove existing optimization configs
          sed -i '/CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE/d' "$CONFIG_FILE"
