@@ -419,6 +419,9 @@ jobs:
           mkdir -p fs
           cp -f susfs4ksu/kernel_patches/fs/susfs.c fs/susfs.c
           echo "✔ Copied fs/susfs.c"
+          # Mark cred-switch helpers unused by BakaSU (inline hook path) to avoid -Werror failure
+          sed -i -e 's/\(static struct cred \*\)susfs_switch_to_ksu_domain/\1__maybe_unused susfs_switch_to_ksu_domain/' \
+                 -e 's/\(static void \)susfs_restore_creds/\1__maybe_unused susfs_restore_creds/' fs/susfs.c
           
           # Always replace include/linux/susfs.h
           mkdir -p include/linux
