@@ -130,6 +130,12 @@ jobs:
           CONFIG_ZRAM=m
           CONFIG_ZRAM_DEF_COMP_ZSTD=y
           # CONFIG_ZRAM_DEF_COMP_LZORLE is not set
+          # Wireless: TL-WN722N v1 / WN822N v1 (Atheros AR9271)
+          CONFIG_CFG80211=y
+          CONFIG_MAC80211=y
+          CONFIG_WLAN_VENDOR_ATH=y
+          CONFIG_ATH9K=y
+          CONFIG_ATH9K_HTC=y
           EOF
 
       - name: "🔧 Setup ReSukiSU"
