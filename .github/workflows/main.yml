@@ -127,6 +127,9 @@ jobs:
           CONFIG_KALLSYMS=y
           CONFIG_TMPFS_XATTR=y
           CONFIG_TMPFS_POSIX_ACL=y
+          CONFIG_ZRAM=m
+          CONFIG_ZRAM_DEF_COMP_ZSTD=y
+          # CONFIG_ZRAM_DEF_COMP_LZORLE is not set
           EOF
 
       - name: "🔧 Setup ReSukiSU"
