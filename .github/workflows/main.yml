@@ -138,6 +138,18 @@ jobs:
           CONFIG_ATH9K_HTC=y
           EOF
 
+      - name: "🌾 Apply BORE scheduler patch"
+        working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
+        run: |
+          echo "🌾 Applying BORE (Burst-Oriented Response Enhancer) patch..."
+          if patch -p1 --forward --dry-run < "${{ github.workspace }}/assets/bore.patch"; then
+            patch -p1 --forward < "${{ github.workspace }}/assets/bore.patch"
+            echo "✅ BORE patch successfully applied"
+          else
+            echo "❌ BORE patch failed to apply"
+            exit 1
+          fi
+
       - name: "🔧 Setup ReSukiSU"
         if: matrix.variant == 'ksu'
         working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
